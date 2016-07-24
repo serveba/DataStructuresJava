@@ -77,4 +77,11 @@ public class LinkedListTest {
     assertTrue(testList.size() == 0);
   }
 
+  @Test
+  public void testToString() {
+    String info = list.toString();
+    final String EXPECTED = "(1, 2, 3, 4, 5)";
+    assertEquals(EXPECTED, info);
+  }
+
 }

@@ -1,6 +1,8 @@
 package com.serveba.adt;
 
 
+import java.lang.StringBuilder;
+
 public class LinkedList {
 
   private Node head;
@@ -71,6 +73,29 @@ public class LinkedList {
 
     decCounter();
     return true;
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder info = new StringBuilder("(");
+
+    if(head != null) {
+      Node cursor = head;
+      for (int i = 0; i < size(); i++) {
+        if(cursor != null) {
+
+          if(info.toString().length() > 1) {
+            info.append(", ");
+          }
+          info.append(cursor.getData().toString());
+          cursor = cursor.getNext();
+        }
+      }
+    }
+
+    info.append(")");
+
+    return info.toString();
   }
 
   private boolean isNotValidIndex(int index) {
