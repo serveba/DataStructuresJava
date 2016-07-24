@@ -9,6 +9,8 @@ public class LinkedList {
 
   private Node tail;
 
+  private Node iterator;
+
   private int counter;
 
   public LinkedList() {
@@ -23,6 +25,7 @@ public class LinkedList {
   public void add(Object data) {
     if(head == null) {
       head = new Node(data);
+      iterator = head;
       tail = head;
       counter++;
       return;
@@ -31,6 +34,23 @@ public class LinkedList {
     tail.setNext(item);
     tail = item;
     counter++;
+  }
+
+  public boolean next() {
+    if(iterator == null || iterator.getNext() == null) {
+      return false;
+    }
+
+    Object data = iterator.getNext().getData();
+    iterator = iterator.getNext();
+    return true;
+  }
+
+  public Object getData() {
+    if(iterator == null ) {
+      return null;
+    }
+    return iterator.getData();
   }
 
   public Object get(int index) {
@@ -48,6 +68,7 @@ public class LinkedList {
     if(head == null) {
       head = new Node(data);
       tail = head;
+      iterator = head;
       counter = 1;
       return;
     }
@@ -55,6 +76,7 @@ public class LinkedList {
     Node first = new Node(data);
     first.setNext(head);
     head = first;
+    iterator = head;
     counter++;
   }
 
@@ -64,6 +86,7 @@ public class LinkedList {
     }
     Node deleted = head;
     head = head.getNext();
+    iterator = head;
     deleted.destroy();
     counter--;
 
@@ -81,6 +104,7 @@ public class LinkedList {
 
     if(size() == 1 && index == 0) {
       head = null;
+      iterator = null;
       counter--;
       return true;
     }

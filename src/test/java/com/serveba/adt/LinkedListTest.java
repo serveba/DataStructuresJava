@@ -97,6 +97,17 @@ public class LinkedListTest {
   }
 
   @Test
+  public void testLoop() {
+    int i = 0;
+    do {
+      Object data = list.getData();
+      assertEquals(list.get(i), data);
+      i++;
+    }while (list.next());
+    assertTrue(i == 5);
+  }
+
+  @Test
   public void testToString() {
     String info = list.toString();
     final String EXPECTED = "(1, 2, 3, 4, 5)";
