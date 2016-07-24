@@ -12,15 +12,15 @@ public class Stack {
   }
 
   public Object peek() {
-    return stack.get(stack.size()-1);
+    return stack.get(0);
   }
 
   public void push(Object data) {
-    stack.add(data);
+    stack.addInitial(data);
   }
 
   public boolean pop() {
-    return stack.remove(stack.size()-1);
+    return stack.removeInitial();
   }
 
   public int size() {

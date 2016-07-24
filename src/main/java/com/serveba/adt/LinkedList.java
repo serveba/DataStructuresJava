@@ -18,26 +18,20 @@ public class LinkedList {
     return counter;
   }
 
-  private void incCounter() {
-    counter++;
-  }
-
-  private void decCounter() {
-    counter--;
-  }
-
   public void add(Object data) {
     if(head == null) {
       head = new Node(data);
-      incCounter();
+      counter++;
       return;
     }
+
     Node cursor = head;
     while ( cursor.getNext() != null ) {
       cursor = cursor.getNext();
     }
     cursor.setNext(new Node(data));
-    incCounter();
+
+    counter++;
   }
 
   public Object get(int index) {
@@ -51,6 +45,30 @@ public class LinkedList {
     return cursor.getData();
   }
 
+  public void addInitial(Object data) {
+    if(head == null) {
+      head = new Node(data);
+      counter = 1;
+      return;
+    }
+
+    Node first = new Node(data);
+    first.setNext(head);
+    head = first;
+    counter++;
+  }
+
+  public boolean removeInitial() {
+    if(head == null) {
+      return false;
+    }
+    Node deleted = head;
+    head = head.getNext();
+    deleted.destroy();
+    counter--;
+    return true;
+  }
+
   public boolean remove(int index) {
     if( isNotValidIndex(index) ) {
       return false;
@@ -58,7 +76,7 @@ public class LinkedList {
 
     if(size() == 1 && index == 0) {
       head = null;
-      decCounter();
+      counter--;
       return true;
     }
 
@@ -70,8 +88,7 @@ public class LinkedList {
     Node deleted = cursor.getNext();
     cursor.setNext(deleted.getNext());
     deleted.destroy();
-
-    decCounter();
+    counter--;
     return true;
   }
 

@@ -78,6 +78,25 @@ public class LinkedListTest {
   }
 
   @Test
+  public void testAddInitial() {
+    list.addInitial(new Integer(6));
+    assertTrue(list.size() == 6);
+    assertTrue((Integer)list.get(0) == 6);
+  }
+
+  @Test
+  public void removeInitial() {
+    list.addInitial(new Integer(6));
+    assertTrue(list.size() == 6);
+    assertTrue((Integer)list.get(0) == 6);
+    assertTrue(list.removeInitial());
+    assertTrue(list.size() == 5);
+    assertTrue((Integer)list.get(0) == 1);
+    LinkedList testList = new LinkedList();
+    assertFalse(testList.removeInitial());
+  }
+
+  @Test
   public void testToString() {
     String info = list.toString();
     final String EXPECTED = "(1, 2, 3, 4, 5)";

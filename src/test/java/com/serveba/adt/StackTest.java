@@ -47,7 +47,7 @@ public class StackTest {
   @Test
   public void testToString() {
     String info = stack.toString();
-    final String EXPECTED = "(1, 2, 3, 4, 5)";
+    final String EXPECTED = "(5, 4, 3, 2, 1)";
     assertEquals(EXPECTED, info);
   }
 
