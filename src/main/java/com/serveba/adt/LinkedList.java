@@ -39,7 +39,7 @@ public class LinkedList {
   }
 
   public Object get(int index) {
-    if(index <= 0 || head == null || index > size() - 1) {
+    if(isNotValidIndex(index)) {
       return null;
     }
     Node cursor = head;
@@ -50,8 +50,31 @@ public class LinkedList {
   }
 
   public boolean remove(int index) {
-    // TODO
-    return false;
+    if( isNotValidIndex(index) ) {
+      return false;
+    }
+
+    if(size() == 1 && index == 0) {
+      head = null;
+      decCounter();
+      return true;
+    }
+
+    Node cursor = head;
+    for(int i = 0; i < index - 1 ; i++) {
+      cursor = cursor.getNext();
+    }
+
+    Node deleted = cursor.getNext();
+    cursor.setNext(deleted.getNext());
+    deleted.destroy();
+
+    decCounter();
+    return true;
+  }
+
+  private boolean isNotValidIndex(int index) {
+    return (index < 0 || head == null || index > size() - 1);
   }
 
   private class Node {
@@ -78,6 +101,11 @@ public class LinkedList {
 
     public void setNext(Node nextValue) {
       next = nextValue;
+    }
+
+    public void destroy() {
+      next = null;
+      data = null;
     }
 
   }
