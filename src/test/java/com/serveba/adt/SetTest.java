@@ -87,6 +87,7 @@ public class SetTest {
     assertFalse(nameSet.isMember("Kate"));
   }
 
+
   @Test
   public void testIntersection() {
     Set intersection = nameSet.intersection(carSet);
@@ -99,7 +100,7 @@ public class SetTest {
   public void testUnion() {
     Set union = nameSet.union(carSet);
     assertNotNull(union);
-    int size = NAMES.length + CARS.length;
+    int size = NAMES.length + CARS.length - 1;
     assertTrue(union.size() == size);
   }
 
@@ -107,7 +108,7 @@ public class SetTest {
   public void testDifference() {
     Set difference = nameSet.difference(carSet);
     assertNotNull(difference);
-    int diff = NAMES.length + CARS.length - 1;
+    int diff = NAMES.length - 1;
     assertTrue(difference.size() == diff);
   }
 

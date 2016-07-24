@@ -108,6 +108,14 @@ public class LinkedListTest {
   }
 
   @Test
+  public void removeObjectTest() {
+    for(int i=0; i<5; i++) {
+        //System.out.println("removing: " + (i+1));
+        assertTrue(list.remove(new Integer(i+1)));
+    }
+  }
+
+  @Test
   public void testToString() {
     String info = list.toString();
     final String EXPECTED = "(1, 2, 3, 4, 5)";

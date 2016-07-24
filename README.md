@@ -12,7 +12,8 @@ We have the following Data Structures with unit tests:
 	init method:     	   		   O(1)
 	insert method (last):   	   O(n)
 	retrieve method (index):       O(n)
-	delete method (index):   	   O(n)
+	remove method (index):   	   O(n)
+	remove method (object):   	   O(n)
 	insertInitial: 		   		   O(1) 
     deleteInitial: 		   		   O(1)
 
@@ -29,7 +30,18 @@ We have the following Data Structures with unit tests:
 	enqueue method:   	   O(1)
 	peek method:       	   O(1)
 	dequeue method:	  	   O(1)
-	
+
+
+### Set
+	init method:     	   		   O(1)
+	insert method:   	   		   O(n)
+	remove method:         		   O(1)
+	isMember method:   	   		   O(n)
+	isSubset method:   	   		   O(n)
+	isEqual method:   	   		   O(n*m)
+	union method:	  	   		   O(n*m)	
+	intersection method:	  	   O(n*m)	
+	difference method:		  	   O(n*m)	
 	
 ## Running the tests
 

@@ -36,6 +36,10 @@ public class LinkedList {
     counter++;
   }
 
+  public void resetIterator() {
+    iterator = head;
+  }
+
   public boolean next() {
     if(iterator == null || iterator.getNext() == null) {
       return false;
@@ -95,6 +99,39 @@ public class LinkedList {
     }
 
     return true;
+  }
+
+  public boolean remove(Object data) {
+
+    if((head == null) || (data==null)) {
+      return false;
+    }
+
+    Node cursor = head;
+
+    if(cursor.getData() != null && data.equals(cursor.getData())) {
+      head = cursor.getNext();
+      iterator = head;
+      cursor.destroy();
+      counter--;
+      return true;
+    }
+
+    while (cursor.getNext() != null) {
+      Object item = cursor.getNext().getData();
+
+      if(item != null && item.equals(data)) {
+        Node deleted = cursor.getNext();
+        cursor.setNext(deleted.getNext());
+        deleted.destroy();
+        counter--;
+        return true;
+      }
+
+      cursor = cursor.getNext();
+    }
+
+    return false;
   }
 
   public boolean remove(int index) {
