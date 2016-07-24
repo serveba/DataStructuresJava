@@ -3,11 +3,11 @@ package com.serveba.adt;
 import com.serveba.adt.LinkedList;
 import java.lang.StringBuilder;
 
-public class Stack {
+public class Queue {
 
   private LinkedList list;
 
-  public Stack() {
+  public Queue() {
     list = new LinkedList();
   }
 
@@ -15,11 +15,11 @@ public class Stack {
     return list.get(0);
   }
 
-  public void push(Object data) {
-    list.addInitial(data);
+  public void enqueue(Object data) {
+    list.add(data);
   }
 
-  public boolean pop() {
+  public boolean dequeue() {
     return list.removeInitial();
   }
 

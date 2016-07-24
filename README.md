@@ -24,6 +24,13 @@ We have the following Data Structures with unit tests:
 	pop method:		   	   O(1)
 
 
+### Queue
+	init method:     	   O(1)
+	enqueue method:   	   O(1)
+	peek method:       	   O(1)
+	dequeue method:	  	   O(1)
+	
+	
 ## Running the tests
 
 If you want to run the project you need to have maven installed and run:

@@ -7,6 +7,8 @@ public class LinkedList {
 
   private Node head;
 
+  private Node tail;
+
   private int counter;
 
   public LinkedList() {
@@ -21,16 +23,13 @@ public class LinkedList {
   public void add(Object data) {
     if(head == null) {
       head = new Node(data);
+      tail = head;
       counter++;
       return;
     }
-
-    Node cursor = head;
-    while ( cursor.getNext() != null ) {
-      cursor = cursor.getNext();
-    }
-    cursor.setNext(new Node(data));
-
+    Node item = new Node(data);
+    tail.setNext(item);
+    tail = item;
     counter++;
   }
 
@@ -48,6 +47,7 @@ public class LinkedList {
   public void addInitial(Object data) {
     if(head == null) {
       head = new Node(data);
+      tail = head;
       counter = 1;
       return;
     }
@@ -66,6 +66,11 @@ public class LinkedList {
     head = head.getNext();
     deleted.destroy();
     counter--;
+
+    if(tail == null) {
+      tail = head;
+    }
+
     return true;
   }
 
