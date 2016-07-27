@@ -7,10 +7,10 @@ public class BinaryTreeNode {
 	Object data;
 
 	public BinaryTreeNode(Object dataValue) {
-    left = null;
-    right = null;
-    data = dataValue;
-  }
+		left = null;
+		right = null;
+		data = dataValue;
+	}
 
 	public Object getData() {
 		return data;
@@ -41,13 +41,13 @@ public class BinaryTreeNode {
 		right = null;
 		data = null;
 	}
-	
+
 	@Override
 	public String toString() {
-		if(data == null) {
+		if (data == null) {
 			return "";
 		}
-		
+
 		return data.toString();
 	}
 

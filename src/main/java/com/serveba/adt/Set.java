@@ -1,138 +1,135 @@
 package com.serveba.adt;
 
-import com.serveba.adt.LinkedList;
-import java.lang.StringBuilder;
-
 public class Set {
 
-  private LinkedList list;
+	private LinkedList list;
 
-  public Set() {
-    list = new LinkedList();
-  }
+	public Set() {
+		list = new LinkedList();
+	}
 
-  public void insert(Object data) {
-    // to avoid duplicated objects
-    if (!isMember(data)) {
-        list.add(data);
-    }
-  }
+	public void insert(Object data) {
+		// to avoid duplicated objects
+		if (!isMember(data)) {
+			list.add(data);
+		}
+	}
 
-  public boolean isMember(Object data) {
-    if (data == null) {
-      return false;
-    }
+	public boolean isMember(Object data) {
+		if (data == null) {
+			return false;
+		}
 
-    do {
-      Object setData = list.getData();
-      if(data.equals(setData)) {
-        list.resetIterator();
-        return true;
-      }
-    }while (list.next());
+		do {
+			Object setData = list.getData();
+			if (data.equals(setData)) {
+				list.resetIterator();
+				return true;
+			}
+		} while (list.next());
 
-    list.resetIterator();
+		list.resetIterator();
 
-    return false;
-  }
+		return false;
+	}
 
-  public LinkedList getList() {
-    return list;
-  }
+	public LinkedList getList() {
+		return list;
+	}
 
-  public boolean isSubset(Set set) {
-    if (set == null) {
-      return false;
-    }
+	public boolean isSubset(Set set) {
+		if (set == null) {
+			return false;
+		}
 
-    do {
-      Object data = list.getData();
-      if(!set.isMember(data)) {
-        list.resetIterator();
-        return false;
-      }
-    }while (list.next());
+		do {
+			Object data = list.getData();
+			if (!set.isMember(data)) {
+				list.resetIterator();
+				return false;
+			}
+		} while (list.next());
 
-    list.resetIterator();
+		list.resetIterator();
 
-    return true;
-  }
+		return true;
+	}
 
-  public boolean isEqual(Set set) {
-    return this.isSubset(set) && set.isSubset(this);
-  }
+	public boolean isEqual(Set set) {
+		return this.isSubset(set) && set.isSubset(this);
+	}
 
-  public boolean remove(Object data) {
-    return list.remove(data);
-  }
+	public boolean remove(Object data) {
+		return list.remove(data);
+	}
 
-  public Set intersection(Set set) {
-    if(set == null) {
-      return null;
-    }
-    Set intersection = new Set();
-    do {
-      Object data = list.getData();
-      if(set.isMember(data)) {
-        intersection.insert(data);
-      }
-    }while (list.next());
+	public Set intersection(Set set) {
+		if (set == null) {
+			return null;
+		}
+		Set intersection = new Set();
+		do {
+			Object data = list.getData();
+			if (set.isMember(data)) {
+				intersection.insert(data);
+			}
+		} while (list.next());
 
-    list.resetIterator();
+		list.resetIterator();
 
-    return intersection;
-  }
+		return intersection;
+	}
 
-  public Set union(Set set) {
-    if(set == null) {
-      return null;
-    }
-    Set union = new Set();
-    do {
-      Object data = list.getData();
-      union.insert(data);
-    }while (list.next());
+	public Set union(Set set) {
+		if (set == null) {
+			return null;
+		}
+		Set union = new Set();
+		do {
+			Object data = list.getData();
+			union.insert(data);
+		} while (list.next());
 
-    list.resetIterator();
+		list.resetIterator();
 
-    LinkedList secondList = set.getList();
+		LinkedList secondList = set.getList();
 
-    do {
-      Object data = secondList.getData();
-      if(!isMember(data)) {
-        union.insert(data);
-      }
-    }while (secondList.next());
+		do {
+			Object data = secondList.getData();
+			if (!isMember(data)) {
+				union.insert(data);
+			}
+		} while (secondList.next());
 
-    secondList.resetIterator();
+		secondList.resetIterator();
 
-    return union;
-  }
+		return union;
+	}
 
-  public Set difference(Set set) {
-    if(set == null) {
-      return null;
-    }
-    Set diff = new Set();
-    do {
-      Object data = list.getData();
-      if(!set.isMember(data)) {
-        diff.insert(data);
-      }
-    }while (list.next());
+	public Set difference(Set set) {
+		if (set == null) {
+			return null;
+		}
+		Set diff = new Set();
+		do {
+			Object data = list.getData();
+			if (!set.isMember(data)) {
+				diff.insert(data);
+			}
+		} while (list.next());
 
-    list.resetIterator();
+		list.resetIterator();
 
-    return diff;
-  }
+		return diff;
+	}
 
-  public int size() {
-    return list.size();
-  }
+	public int size() {
+		return list.size();
+	}
 
-  @Override
-  public String toString() {
-      return list == null ? "" : list.toString();
-  }
+	@Override
+	public String toString() {
+		return list == null ? "" : list.toString();
+	}
 
 }
