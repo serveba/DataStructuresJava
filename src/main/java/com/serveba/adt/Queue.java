@@ -1,8 +1,5 @@
 package com.serveba.adt;
 
-import com.serveba.adt.LinkedList;
-import java.lang.StringBuilder;
-
 public class Queue {
 
   private LinkedList list;
@@ -25,6 +22,10 @@ public class Queue {
 
   public int size() {
     return list == null ? 0 : list.size();
+  }
+  
+  public boolean isEmpty() {
+	  return size() == 0;
   }
 
   @Override

@@ -1,3 +1,4 @@
+package com.serveba.adt;
 
 public class HashTableChain {
     private final static int TABLE_SIZE = 128;
